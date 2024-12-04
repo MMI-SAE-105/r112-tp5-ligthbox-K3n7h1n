@@ -1,3 +1,50 @@
 /**
 * Lightbox
 */
+
+#lightbox {
+    position: fixed;
+ border-radius: 10px;
+ border-width: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  animation: pop 0.5s ease 0.5s forwards;
+}
+
+::backdrop {
+  background: rgb(139, 152, 108);
+  animation: slidein 0.5s ease forwards; 
+}
+
+#lightbox::before {
+  content: 'X';
+  position: absolute;
+  background-color: coral;
+  border-radius: 10px;
+  z-index: 3;
+}
+#lightbox img {
+  transform: scale(0);
+  animation: pop 0.5s ease forwards;
+  animation-delay: 0.5s;
+  /* S'assure que l'image est en dessous de la croix */
+  z-index: 2;
+}
+
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+}
+
+/* Keyframes pour l'animation de "pop" */
+@keyframes pop {
+  to {
+      transform: scale(1);
+  }
+}
